@@ -1,0 +1,1204 @@
+/* Base styles */
+:root {
+    /* Updated Color Palette */
+    --background: #fdfdfd; /* Very light, almost white background */
+    --foreground: #1a1a1a; /* Darker text for contrast */
+    --card: #ffffff; /* Pure white for cards */
+    --card-foreground: #1a1a1a;
+    --primary: #2563eb; /* Vibrant blue */
+    --primary-hover: #1d4ed8; /* Slightly darker blue for hover */
+    --primary-foreground: #f8f9fc; /* Light text on primary */
+    --secondary: #eef2f6; /* Lighter secondary background */
+    --secondary-foreground: #4a5568; /* Darker text on secondary */
+    --muted: #f3f4f6; /* Muted background */
+    --muted-foreground: #64748b; /* Muted text */
+    --accent: #e0f2f7; /* Very light accent background */
+    --accent-foreground: #2c5282; /* Darker text on accent */
+    --destructive: #ef4444; /* Red for destructive actions */
+    --destructive-foreground: #f8f9fc;
+    --border: #e2e8f0; /* Soft border color */
+    --input: #e2e8f0; /* Input border color */
+    --ring: #2563eb; /* Focus ring color */
+    --radius: 0.5rem; /* Standard border radius */
+
+    /* Typography */
+    --font-family-base: 'Inter', sans-serif;
+    --font-family-heading: 'Inter', sans-serif; /* Keeping Inter for headings for modern consistency, but can be changed */
+    --font-size-base: 1rem;
+    --line-height-base: 1.7; /* Increased for better readability */
+
+    /* Box Shadows (Refined for subtle depth) */
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
+    --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.12), 0 4px 6px rgba(0, 0, 0, 0.08);
+    --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.15), 0 10px 10px rgba(0, 0, 0, 0.08);
+}
+
+.dark-mode {
+    --background: #0D1117; /* Softer dark background */
+    --foreground: #e2e8f0;
+    --card: #161B22; /* Darker card for contrast */
+    --card-foreground: #e2e8f0;
+    --primary: #3b82f6; /* Lighter blue for dark mode */
+    --primary-hover: #60a5fa;
+    --primary-foreground: #0D1117;
+    --secondary: #2d3748; /* Darker secondary */
+    --secondary-foreground: #e2e8f0;
+    --muted: #2d3748;
+    --muted-foreground: #a0aec0;
+    --accent: #2d3748;
+    --accent-foreground: #e2e8f0;
+    --destructive: #7f1d1d;
+    --destructive-foreground: #f8f9fc;
+    --border: #4a5568; /* Darker border */
+    --input: #4a5568;
+    --ring: #3b82f6;
+
+    /* Shadows will naturally appear softer on dark backgrounds */
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3), 0 1px 2px rgba(0, 0, 0, 0.2);
+    --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.35), 0 1px 3px rgba(0, 0, 0, 0.25);
+    --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.4), 0 4px 6px rgba(0, 0, 0, 0.3);
+    --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.45), 0 10px 10px rgba(0, 0, 0, 0.35);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-family-base);
+    background-color: var(--background);
+    color: var(--foreground);
+    line-height: var(--line-height-base);
+    transition: background-color 0.3s ease, color 0.3s ease; /* Smooth theme transition */
+}
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem; /* Increased horizontal padding */
+}
+
+a {
+    text-decoration: none;
+    color: var(--primary);
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--primary-hover);
+}
+
+ul {
+    list-style: none;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block; /* Removes extra space below images */
+}
+
+/* Headings - Enhanced Typography */
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-family-heading);
+    font-weight: 700; /* Bold headings */
+    line-height: 1.2;
+    margin-bottom: 0.75rem; /* Consistent bottom margin */
+    color: var(--foreground); /* Headings use foreground color unless specified */
+}
+
+h1 { font-size: 3.5rem; letter-spacing: -0.03em; }
+h2 { font-size: 2.5rem; letter-spacing: -0.02em; }
+h3 { font-size: 1.8rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.1rem; }
+h6 { font-size: 0.9rem; }
+
+/* Utility classes */
+.text-primary {
+    color: var(--primary);
+}
+
+.text-muted {
+    color: var(--muted-foreground);
+}
+
+.mobile-only {
+    display: none;
+}
+
+@media (max-width: 640px) {
+    .mobile-only {
+        display: inline-block;
+    }
+    .desktop-only {
+        display: none;
+    }
+    h1 { font-size: 2.5rem; }
+    h2 { font-size: 2rem; }
+}
+
+/* Button styles */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem; /* Slightly larger padding */
+    border-radius: var(--radius);
+    font-weight: 600; /* Bolder text */
+    transition: all 0.3s ease;
+    cursor: pointer;
+    font-size: 0.9rem; /* Slightly larger font size */
+    text-transform: uppercase; /* Modern uppercase */
+    letter-spacing: 0.05em; /* Subtle letter spacing */
+}
+
+.btn i {
+    font-size: 1rem; /* Adjust icon size with button */
+}
+
+.btn-primary {
+    background-color: var(--primary);
+    color: var(--primary-foreground);
+    border: none;
+    box-shadow: var(--shadow-sm); /* Initial subtle shadow */
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-hover);
+    transform: translateY(-3px); /* More pronounced lift */
+    box-shadow: var(--shadow-md); /* More pronounced shadow on hover */
+}
+
+.btn-primary:active {
+    transform: translateY(0);
+    box-shadow: var(--shadow-sm);
+}
+
+.btn-outline {
+    background-color: transparent;
+    color: var(--foreground);
+    border: 1px solid var(--border);
+}
+
+.btn-outline:hover {
+    background-color: var(--muted);
+    border-color: var(--primary); /* Border changes color on hover */
+    color: var(--primary);
+}
+
+.btn-full {
+    width: 100%;
+}
+
+/* Card styles */
+.card {
+    background-color: var(--card);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-lg); /* More prominent initial shadow */
+    padding: 2rem; /* Increased padding */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth hover transition */
+}
+
+.card:hover {
+    transform: translateY(-7px); /* Lift the card slightly more */
+    box-shadow: var(--shadow-xl); /* More pronounced shadow on hover */
+}
+
+/* Tag styles */
+.tag {
+    display: inline-block;
+    padding: 0.35rem 0.75rem; /* Slightly larger padding for readability */
+    background-color: var(--secondary);
+    color: var(--secondary-foreground);
+    border-radius: var(--radius);
+    font-size: 0.75rem;
+    font-weight: 500; /* Slightly bolder */
+    margin-right: 0.6rem; /* Consistent spacing */
+    margin-bottom: 0.6rem;
+    white-space: nowrap; /* Prevent tags from breaking */
+}
+
+/* Navbar */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+    padding: 1rem 0;
+    transition: all 0.3s ease;
+    background-color: transparent;
+}
+
+.navbar.scrolled {
+    background-color: color-mix(in srgb, var(--background) 90%, transparent); /* Subtle transparency */
+    backdrop-filter: blur(12px) saturate(180%); /* Stronger glassmorphism effect */
+    box-shadow: var(--shadow-md); /* More defined shadow when scrolled */
+}
+
+.navbar .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 700;
+    font-size: 1.5rem; /* Larger logo font */
+    color: var(--primary);
+}
+
+.nav-links {
+    display: flex;
+    gap: 2.5rem; /* Increased gap between links */
+}
+
+.nav-links a {
+    color: var(--muted-foreground);
+    transition: color 0.3s ease;
+    font-weight: 500;
+    position: relative; /* For underline effect */
+    padding-bottom: 0.25rem; /* Space for underline */
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--primary);
+    transition: width 0.3s ease;
+}
+
+.nav-links a:hover::after,
+.nav-links a.active::after {
+    width: 100%;
+}
+
+.mobile-menu-toggle {
+    display: none;
+}
+
+.theme-toggle, .menu-toggle {
+    background: transparent;
+    border: none;
+    color: var(--foreground);
+    font-size: 1.5rem; /* Larger toggle icons */
+    cursor: pointer;
+    padding: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.3s ease;
+}
+
+.theme-toggle:hover, .menu-toggle:hover {
+    color: var(--primary);
+}
+
+.mobile-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: var(--background);
+    box-shadow: var(--shadow-md);
+    animation: slideInTop 0.3s ease forwards;
+    overflow: hidden; /* Ensure content doesn't overflow during animation */
+}
+
+.mobile-menu ul {
+    padding: 1rem 0;
+}
+
+.mobile-menu a {
+    display: block;
+    padding: 0.75rem 2rem;
+    color: var(--muted-foreground);
+    transition: all 0.3s ease;
+}
+
+.mobile-menu a:hover {
+    color: var(--primary);
+    background-color: var(--muted);
+}
+
+@media (max-width: 768px) {
+    .desktop-menu {
+        display: none;
+    }
+
+    .mobile-menu-toggle {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    .mobile-menu.active {
+        display: block;
+    }
+}
+
+/* Section styles */
+section {
+    padding: 6rem 0; /* Slightly more vertical padding */
+}
+
+.section-heading {
+    text-align: center;
+    margin-bottom: 4rem; /* More space below heading */
+}
+
+.section-icon {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1rem;
+    font-size: 2rem; /* Larger icon */
+    color: var(--primary); /* Icon color */
+}
+
+.section-heading h2 {
+    font-size: 2.5rem; /* Larger section title */
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+}
+
+.section-heading p {
+    color: var(--muted-foreground);
+    max-width: 700px; /* Constrain width for readability */
+    margin: 0 auto;
+}
+
+/* Hero Section */
+.hero-section {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+    padding-top: 6rem; /* Adjust for fixed navbar */
+    overflow: hidden;
+}
+
+.background-gradient {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none; /* Allows clicks through to elements below */
+}
+
+.background-gradient::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at top center, rgba(37, 99, 235, 0.07), transparent 70%); /* Slightly stronger radial gradient */
+}
+
+.background-gradient::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 28rem; /* Taller blur area */
+    background-color: rgba(37, 99, 235, 0.08); /* Slightly more prominent blur color */
+    border-bottom-left-radius: 50%;
+    border-bottom-right-radius: 50%;
+    filter: blur(4rem); /* More blur */
+    transform: translateY(-50%);
+}
+
+.hero-content {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem; /* More space between text and image */
+    align-items: center; /* Center items on small screens */
+    text-align: center; /* Center text on small screens */
+}
+
+.hero-text h1 {
+    font-size: 3.5rem; /* Larger hero title */
+    font-weight: 800; /* Extra bold */
+    line-height: 1.1;
+    margin-bottom: 1.25rem;
+    color: var(--foreground);
+}
+
+.hero-text h1 span {
+    display: block;
+}
+
+.hero-text h1 .text-primary {
+    margin-top: 0.75rem;
+    display: inline; /* Keep primary text on same line */
+}
+
+.hero-text h2 {
+    font-size: 1.5rem; /* Larger sub-heading */
+    font-weight: 600;
+    color: var(--muted-foreground);
+    margin-bottom: 1.5rem;
+}
+
+.hero-text p {
+    font-size: 1.125rem;
+    color: var(--muted-foreground);
+    margin-bottom: 2rem; /* More space before buttons */
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.hero-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center; /* Center buttons on small screens */
+    margin-bottom: 1.5rem;
+}
+
+.social-icons {
+    display: flex;
+    gap: 1.25rem; /* More space between icons */
+    margin-top: 1rem;
+    justify-content: center; /* Center icons on small screens */
+}
+
+.social-icons a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.75rem; /* Slightly larger icons */
+    height: 2.75rem;
+    border-radius: 50%;
+    background-color: var(--card); /* Icons stand out on background */
+    color: var(--muted-foreground);
+    transition: all 0.3s ease;
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow-sm); /* Subtle shadow for icons */
+}
+
+.social-icons a:hover {
+    background-color: var(--primary);
+    color: white;
+    transform: translateY(-4px) scale(1.05); /* More pronounced lift and slight scale */
+    box-shadow: var(--shadow-md);
+}
+
+.profile-card {
+    width: 100%;
+    max-width: 450px; /* Slightly larger max width */
+    aspect-ratio: 1/1;
+    border-radius: 1.5rem; /* More rounded corners */
+    overflow: hidden;
+    box-shadow: var(--shadow-xl); /* Very prominent shadow */
+    position: relative;
+    background: linear-gradient(to bottom right, rgba(37, 99, 235, 0.15), var(--background) 70%); /* Stronger internal gradient */
+    padding: 0.5rem; /* Thicker border effect */
+}
+
+.profile-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 1.25rem; /* Consistent border radius */
+}
+
+.scroll-down {
+    position: absolute;
+    bottom: 3rem; /* Further down */
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    animation: bounce 2s infinite;
+    z-index: 50; /* Ensure it's above other elements if needed */
+}
+
+.scroll-down a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 3.5rem; /* Larger scroll indicator */
+    height: 3.5rem;
+    border-radius: 50%;
+    background-color: var(--card); /* White background for visibility */
+    color: var(--primary); /* Primary color icon */
+    transition: all 0.3s ease;
+    box-shadow: var(--shadow-sm);
+}
+
+.scroll-down a:hover {
+    background-color: var(--primary);
+    color: var(--primary-foreground);
+    box-shadow: var(--shadow-md);
+}
+
+@media (min-width: 768px) {
+    .hero-content {
+        flex-direction: row;
+        align-items: center;
+        text-align: left; /* Align text left on larger screens */
+        justify-content: space-between;
+    }
+
+    .hero-text {
+        width: 55%; /* Allocate more space to text */
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    .hero-image {
+        width: 45%;
+        display: flex;
+        justify-content: flex-end; /* Align image to the right */
+    }
+
+    .hero-text h1 {
+        font-size: 4.5rem; /* Even larger heading for desktop */
+    }
+
+    .hero-text h2 {
+        font-size: 1.75rem;
+    }
+
+    .hero-buttons {
+        justify-content: flex-start; /* Align buttons left */
+    }
+
+    .social-icons {
+        justify-content: flex-start; /* Align icons left */
+    }
+}
+
+/* About Section */
+.about-cards {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+}
+
+.education-list li {
+    border-left: 3px solid var(--primary); /* Thicker border */
+    padding-left: 1.25rem; /* More padding */
+    margin-bottom: 1rem; /* More space between items */
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+}
+
+.education-degree {
+    font-weight: 600; /* Bolder */
+    font-size: 1.1rem; /* Slightly larger */
+}
+
+.education-specialty {
+    font-size: 0.95rem; /* Slightly larger */
+    color: var(--foreground); /* Use foreground for better visibility */
+}
+
+.education-school {
+    font-size: 0.875rem;
+    color: var(--muted-foreground);
+}
+
+.certification-list li {
+    display: flex;
+    align-items: start;
+    gap: 0.75rem; /* More space */
+    margin-bottom: 1rem;
+}
+
+.certification-list i {
+    margin-top: 0.25rem;
+    min-width: 1.5rem; /* Larger icon space */
+    color: var(--primary); /* Primary color for icons */
+}
+
+.training-info {
+    margin-top: 2rem; /* More top margin */
+}
+
+.training-info h4 {
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.75rem;
+    font-size: 1.2rem; /* Larger training heading */
+}
+
+@media (min-width: 768px) {
+    .about-cards {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* Skills Section */
+.skills-section {
+    background-color: var(--secondary); /* Use secondary color directly */
+    padding: 6rem 0; /* Consistent padding */
+}
+
+.skills-cards {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2.5rem; /* Increased gap */
+}
+
+.skills-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.75rem; /* More space between skills */
+}
+
+.skill-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.6rem; /* Adjusted margin */
+}
+
+.skill-name {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem; /* More space */
+    font-weight: 600; /* Bolder */
+    font-size: 1.1rem; /* Slightly larger */
+}
+
+.skill-percentage {
+    font-size: 0.9rem;
+    color: var(--muted-foreground);
+    font-weight: 500;
+}
+
+.skill-progress {
+    position: relative;
+    height: 0.6rem; /* Slightly thicker progress bar */
+    background-color: var(--border); /* Lighter background for progress */
+    border-radius: 1rem;
+    overflow: hidden;
+}
+
+.skill-progress-bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    background-color: var(--primary);
+    border-radius: 1rem;
+    width: 0;
+    transition: width 1s ease-in-out;
+}
+
+@media (min-width: 768px) {
+    .skills-cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Projects Section */
+.projects-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2.5rem; /* Increased gap */
+}
+
+.project-card {
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    border-radius: var(--radius); /* Apply card radius */
+    box-shadow: var(--shadow-md); /* Consistent card shadow */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Card hover effect */
+    background-color: var(--card); /* Ensure project card has card background */
+}
+
+.project-card:hover {
+    transform: translateY(-7px);
+    box-shadow: var(--shadow-xl);
+}
+
+.project-image {
+    aspect-ratio: 16/9;
+    overflow: hidden;
+    border-top-left-radius: var(--radius); /* Rounded top corners for image */
+    border-top-right-radius: var(--radius);
+}
+
+.project-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.project-card:hover .project-image img {
+    transform: scale(1.08); /* Slightly more pronounced zoom on hover */
+}
+
+.project-content {
+    padding: 1.75rem; /* Increased padding */
+    flex: 1;
+}
+
+.project-content h3 {
+    font-size: 1.35rem; /* Larger project title */
+    font-weight: 700; /* Bolder */
+    margin-bottom: 0.75rem;
+}
+
+.project-content p {
+    color: var(--muted-foreground);
+    margin-bottom: 1.25rem;
+    font-size: 0.95rem; /* Slightly larger paragraph */
+}
+
+.project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 1rem;
+    gap: 0.5rem; /* Small gap for tags */
+}
+
+.project-footer {
+    padding: 0 1.75rem 1.75rem; /* Consistent padding */
+    display: flex;
+    gap: 1rem;
+}
+
+@media (min-width: 768px) {
+    .projects-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Experience Section */
+.experience-section {
+    background-color: var(--secondary); /* Consistent background */
+    padding: 6rem 0; /* Consistent padding */
+}
+
+.timeline-container {
+    max-width: 800px; /* Slightly wider timeline */
+    margin: 0 auto;
+}
+
+.timeline-item {
+    position: relative;
+    padding-left: 2.5rem; /* More space for the line */
+    padding-bottom: 2.5rem; /* More space between items */
+    margin-left: 1rem;
+}
+
+.timeline-item:last-child {
+    padding-bottom: 0; /* No padding after last item */
+}
+
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 3px; /* Thicker line */
+    background-color: var(--primary);
+}
+
+.timeline-dot {
+    position: absolute;
+    width: 1.5rem; /* Larger dot */
+    height: 1.5rem;
+    background-color: var(--primary);
+    border-radius: 50%;
+    left: -0.75rem; /* Center the dot on the line */
+    top: 0;
+    border: 5px solid var(--background); /* Thicker background border */
+    transition: background-color 0.3s ease, border-color 0.3s ease; /* Smooth transition for theme change */
+}
+
+.experience-header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: start;
+    justify-content: space-between;
+    gap: 0.75rem; /* More gap */
+    margin-bottom: 0.6rem;
+}
+
+.experience-header h3 {
+    font-size: 1.35rem; /* Larger role title */
+    font-weight: 700;
+}
+
+.date-badge {
+    display: inline-block;
+    padding: 0.3rem 0.6rem; /* Slightly larger padding */
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    font-size: 0.8rem; /* Consistent font size */
+    background-color: var(--card); /* Badge stands out */
+    color: var(--muted-foreground);
+    font-weight: 500;
+}
+
+.company {
+    color: var(--foreground); /* Company name more prominent */
+    margin-bottom: 0.5rem;
+    font-weight: 600; /* Bolder company name */
+    font-size: 1.05rem;
+}
+
+.location {
+    font-size: 0.875rem;
+    color: var(--muted-foreground);
+    margin-bottom: 1.25rem;
+}
+
+.experience-list {
+    list-style-type: disc;
+    padding-left: 1.5rem; /* More indentation */
+    margin: 0.5rem 0 1rem;
+    color: var(--muted-foreground);
+    font-size: 0.9rem; /* Slightly larger list items */
+}
+
+.experience-list li {
+    margin-bottom: 0.6rem; /* More space between list items */
+}
+
+.experience-tags {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 1rem;
+    gap: 0.5rem;
+}
+
+.timeline-end {
+    text-align: center;
+    margin-top: 2rem; /* More margin */
+    color: var(--muted-foreground);
+    font-style: italic; /* Subtle emphasis */
+}
+
+/* Contact Section */
+.contact-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3rem; /* More space between columns */
+}
+
+.contact-info h3 {
+    font-size: 1.75rem; /* Larger heading */
+    font-weight: 700;
+    margin-bottom: 1.25rem;
+}
+
+.contact-info p {
+    color: var(--muted-foreground);
+    margin-bottom: 2rem; /* More space before cards */
+    font-size: 1rem;
+}
+
+.contact-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem; /* More space between contact cards */
+}
+
+.contact-cards .card {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem; /* More space inside card */
+    padding: 1.5rem; /* More padding inside card */
+    box-shadow: var(--shadow-sm); /* Lighter shadow for contact cards */
+}
+
+.contact-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 3.5rem; /* Larger icon container */
+    height: 3.5rem;
+    border-radius: 50%;
+    background-color: rgba(37, 99, 235, 0.12); /* Slightly stronger primary tint */
+}
+
+.contact-icon i {
+    color: var(--primary);
+    font-size: 1.75rem; /* Larger icon */
+}
+
+.contact-detail h4 {
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+    font-size: 1.05rem;
+}
+
+.contact-detail a {
+    font-size: 0.9rem;
+    color: var(--muted-foreground);
+    transition: color 0.3s ease;
+}
+
+.contact-detail a:hover {
+    color: var(--primary);
+}
+
+.contact-detail p {
+    font-size: 0.9rem;
+    color: var(--muted-foreground);
+    margin: 0;
+}
+
+.contact-form-container h3 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin-bottom: 1.75rem;
+}
+
+.form-group {
+    margin-bottom: 1.25rem; /* More space between form groups */
+}
+
+.form-group label {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 600; /* Bolder labels */
+    margin-bottom: 0.4rem; /* More space below label */
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 0.85rem; /* Slightly more padding */
+    background-color: var(--background); /* Input background matches main background */
+    border: 1px solid var(--input);
+    border-radius: var(--radius);
+    font-family: inherit;
+    font-size: 0.95rem; /* Slightly larger text in inputs */
+    color: var(--foreground); /* Input text color */
+    transition: all 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.25); /* Stronger focus ring */
+}
+
+.form-group textarea {
+    min-height: 120px; /* Decent minimum height for textarea */
+    resize: vertical; /* Allow vertical resizing */
+}
+
+@media (min-width: 768px) {
+    .contact-container {
+        grid-template-columns: 1fr 1.5fr; /* Info on left, form on right, with more space for form */
+    }
+}
+
+/* Footer */
+.footer {
+    background-color: var(--muted); /* Use muted for footer background */
+    padding: 4rem 0; /* More padding */
+    border-top: 1px solid var(--border); /* Subtle top border */
+}
+
+.footer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.footer-content h2 {
+    font-weight: 700;
+    font-size: 1.75rem; /* Larger footer heading */
+    margin-bottom: 0.75rem;
+    color: var(--foreground);
+}
+
+.footer-content p {
+    color: var(--muted-foreground);
+    margin-bottom: 2rem; /* More space */
+    max-width: 600px;
+}
+
+.footer-social {
+    display: flex;
+    gap: 1.5rem; /* More space between icons */
+    margin-bottom: 2.5rem;
+}
+
+.footer-social a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.75rem; /* Larger icons */
+    height: 2.75rem;
+    border-radius: 50%;
+    border: 1px solid var(--border);
+    color: var(--muted-foreground);
+    transition: all 0.3s ease;
+    box-shadow: var(--shadow-sm); /* Subtle shadow */
+}
+
+.footer-social a:hover {
+    background-color: var(--primary);
+    color: white;
+    transform: translateY(-3px) scale(1.05); /* Lift and slight scale */
+    box-shadow: var(--shadow-md);
+}
+
+.footer-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2.5rem; /* More space between links */
+    margin-bottom: 2rem;
+}
+
+.footer-links a {
+    color: var(--muted-foreground);
+    transition: color 0.3s ease;
+    font-weight: 500;
+}
+
+.footer-links a:hover {
+    color: var(--primary);
+}
+
+.footer-copyright {
+    padding-top: 2rem; /* More padding */
+    border-top: 1px solid var(--border);
+    width: 100%;
+}
+
+.footer-copyright p {
+    font-size: 0.9rem; /* Slightly larger copyright text */
+    color: var(--muted-foreground);
+    margin: 0;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideInFromLeft {
+    from {
+        transform: translateX(-50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideInFromRight {
+    from {
+        transform: translateX(50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideInFromBottom {
+    from {
+        transform: translateY(50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideInTop {
+    from {
+        transform: translateY(-20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-20px);
+    }
+    60% {
+        transform: translateY(-10px);
+    }
+}
+
+.animate-fade-in {
+    animation: fadeIn 0.8s ease forwards;
+}
+
+.animate-slide-in-left {
+    animation: slideInFromLeft 0.8s ease forwards;
+}
+
+.animate-slide-in-right {
+    animation: slideInFromRight 0.8s ease forwards;
+}
+
+.animate-slide-in-bottom {
+    animation: slideInFromBottom 0.8s ease forwards;
+}
+
+.animate-bounce {
+    animation: bounce 2s infinite;
+}
+
+.delay-100 {
+    animation-delay: 100ms;
+}
+
+.delay-200 {
+    animation-delay: 200ms;
+}
+
+.delay-300 {
+    animation-delay: 300ms;
+}
+
+.delay-400 {
+    animation-delay: 400ms;
+}
+
+.delay-500 {
+    animation-delay: 500ms;
+}

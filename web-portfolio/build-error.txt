@@ -1,0 +1,165 @@
+﻿
+> web-portfolio@0.1.0 build
+> next build
+
+node.exe : ΓÜá Warning: 
+Next.js inferred your 
+workspace root, but it may 
+not be correct.
+At line:1 char:1
++ & "C:\Program 
+Files\nodejs/node.exe" 
+"C:\Users\PANCHAL 
+VEDANT\AppData ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~
+    + CategoryInfo         
+     : NotSpecified: (ΓÜá  
+   Warning: Ne...not be    
+ correct.:String) [], R    
+emoteException
+    + FullyQualifiedErrorI 
+   d : NativeCommandError
+ 
+ We detected multiple 
+lockfiles and selected the 
+directory of 
+C:\Users\PANCHAL 
+VEDANT\package-lock.json 
+as the root directory.
+ To silence this warning, 
+set `turbopack.root` in 
+your Next.js config, or 
+consider removing one of 
+the lockfiles if it's not 
+needed.
+   See https://nextjs.org/d
+ocs/app/api-reference/confi
+g/next-config-js/turbopack#
+root-directory for more 
+information.
+ Detected additional 
+lockfiles: 
+   * C:\Users\PANCHAL VEDAN
+T\vedant-portfolio\web-port
+folio\package-lock.json
+
+Γû▓ Next.js 16.2.1 (Turbopack)
+
+  Creating an optimized production build ...
+
+> Build error occurred
+Error: Turbopack build 
+failed with 5 errors:
+./vedant-portfolio/web-port
+folio/src/components/About.
+js
+'styled-jsx' cannot be 
+imported from a Server 
+Component module
+It only works in a Client 
+Component but none of its 
+parents are marked with 
+'use client', so they're 
+Server Components by 
+default.
+
+Import trace:
+  Server Component:
+    ./vedant-portfolio/web-
+portfolio/src/components/Ab
+out.js
+    ./vedant-portfolio/web-
+portfolio/src/app/page.js
+
+
+./vedant-portfolio/web-port
+folio/src/components/Experi
+ence.js
+'styled-jsx' cannot be 
+imported from a Server 
+Component module
+It only works in a Client 
+Component but none of its 
+parents are marked with 
+'use client', so they're 
+Server Components by 
+default.
+
+Import trace:
+  Server Component:
+    ./vedant-portfolio/web-
+portfolio/src/components/Ex
+perience.js
+    ./vedant-portfolio/web-
+portfolio/src/app/page.js
+
+
+./vedant-portfolio/web-port
+folio/src/components/Footer
+.js
+'styled-jsx' cannot be 
+imported from a Server 
+Component module
+It only works in a Client 
+Component but none of its 
+parents are marked with 
+'use client', so they're 
+Server Components by 
+default.
+
+Import trace:
+  Server Component:
+    ./vedant-portfolio/web-
+portfolio/src/components/Fo
+oter.js
+    ./vedant-portfolio/web-
+portfolio/src/app/page.js
+
+
+./vedant-portfolio/web-port
+folio/src/components/Projec
+ts.js
+'styled-jsx' cannot be 
+imported from a Server 
+Component module
+It only works in a Client 
+Component but none of its 
+parents are marked with 
+'use client', so they're 
+Server Components by 
+default.
+
+Import trace:
+  Server Component:
+    ./vedant-portfolio/web-
+portfolio/src/components/Pr
+ojects.js
+    ./vedant-portfolio/web-
+portfolio/src/app/page.js
+
+
+./vedant-portfolio/web-port
+folio/src/components/Skills
+.js
+'styled-jsx' cannot be 
+imported from a Server 
+Component module
+It only works in a Client 
+Component but none of its 
+parents are marked with 
+'use client', so they're 
+Server Components by 
+default.
+
+Import trace:
+  Server Component:
+    ./vedant-portfolio/web-
+portfolio/src/components/Sk
+ills.js
+    ./vedant-portfolio/web-
+portfolio/src/app/page.js
+
+
+    at ignore-listed frames

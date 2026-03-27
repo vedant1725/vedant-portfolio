@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PrimeFirms Invitation</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        background-color: #f3f4f6;
+        font-family: "Helvetica Neue", Arial, sans-serif;
+        color: #111827;
+      }
+      table {
+        border-spacing: 0;
+        border-collapse: collapse;
+      }
+      img {
+        border: 0;
+        display: block;
+      }
+      .wrapper {
+        width: 100%;
+        background-color: #f3f4f6;
+        padding: 32px 16px;
+      }
+      .container {
+        width: 100%;
+        max-width: 600px;
+        background-color: #ffffff;
+        border-radius: 16px;
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+      }
+      .header {
+        background-color: #0f172a;
+        color: #ffffff;
+        padding: 28px 32px;
+      }
+      .content {
+        padding: 32px;
+      }
+      .section-title {
+        font-size: 20px;
+        margin: 24px 0 12px;
+        color: #0f172a;
+      }
+      .offer-card {
+        background-color: #f8fafc;
+        border: 1px solid #e2e8f0;
+        border-radius: 12px;
+        padding: 20px;
+        margin: 20px 0;
+      }
+      .stats {
+        width: 100%;
+        margin: 24px 0;
+        border: 1px solid #e2e8f0;
+        border-radius: 12px;
+        background-color: #f8fafc;
+      }
+      .stats td {
+        width: 50%;
+        text-align: center;
+        padding: 18px;
+        font-size: 14px;
+        color: #475569;
+      }
+      .stats .metric {
+        display: block;
+        font-size: 20px;
+        font-weight: 700;
+        color: #0f172a;
+        margin-bottom: 4px;
+      }
+      .benefits td {
+        padding: 10px 0;
+        font-size: 15px;
+        color: #334155;
+      }
+      .button {
+        display: inline-block;
+        background-color: #2563eb;
+        color: #ffffff;
+        text-decoration: none;
+        padding: 14px 28px;
+        border-radius: 999px;
+        font-weight: 600;
+        letter-spacing: 0.2px;
+      }
+      .footer {
+        background-color: #0f172a;
+        color: #e2e8f0;
+        padding: 24px 32px;
+        font-size: 12px;
+        line-height: 1.6;
+        text-align: center;
+      }
+      .footer a {
+        color: #e2e8f0;
+        text-decoration: none;
+        margin: 0 6px;
+      }
+      .muted {
+        color: #6b7280;
+        font-size: 14px;
+      }
+    </style>
+  </head>
+  <body>
+    <table role="presentation" class="wrapper" width="100%">
+      <tr>
+        <td align="center">
+          <table role="presentation" class="container" width="100%">
+            <tr>
+              <td class="header">
+                <h1 style="margin: 0; font-size: 26px; font-weight: 600;">
+                  You've Been Selected for PrimeFirms
+                </h1>
+              </td>
+            </tr>
+            <tr>
+              <td class="content">
+                <p style="margin: 0 0 16px;">Dear {{ name }},</p>
+                <p style="margin: 0 0 16px; line-height: 1.6;">
+                  Your agency has been carefully evaluated and selected to join
+                  <strong>PrimeFirms.co</strong>, an exclusive directory featuring only the top 5%
+                  of agencies worldwide. We've prepared a premium profile for your review.
+                </p>
+
+                <div class="offer-card">
+                  <p style="margin: 0 0 8px; font-weight: 600; color: #0f172a;">
+                    Early Adopter Offer
+                  </p>
+                  <p style="margin: 0 0 4px;">Regular listing fee: $299</p>
+                  <p style="margin: 0 0 12px; font-size: 20px; font-weight: 700; color: #16a34a;">
+                    $0
+                  </p>
+                  <p style="margin: 0; line-height: 1.5;">
+                    Claim your complimentary premium listing as a founding member. Limited to 50
+                    agencies per country, per service category.
+                  </p>
+                </div>
+
+                <table role="presentation" class="stats">
+                  <tr>
+                    <td>
+                      <span class="metric">{{ Total }}</span>
+                      Registered Agencies
+                    </td>
+                    <td>
+                      <span class="metric">{{ Total_services }}+</span>
+                      Service Categories
+                    </td>
+                  </tr>
+                </table>
+
+                <h2 class="section-title">Membership Benefits</h2>
+                <table role="presentation" class="benefits" width="100%">
+                  <tr>
+                    <td>
+                      <strong>Enhanced Visibility</strong><br />
+                      Connect with qualified clients actively seeking top-tier agencies
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <strong>Verified Network</strong><br />
+                      Join an exclusive community of thoroughly vetted agencies
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <strong>Profile Management</strong><br />
+                      Full control to showcase portfolio, services, and expertise
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <strong>Zero Investment</strong><br />
+                      Complimentary premium listing for early adopters
+                    </td>
+                  </tr>
+                </table>
+
+                <table role="presentation" width="100%" style="margin: 28px 0;">
+                  <tr>
+                    <td align="center">
+                      <a class="button" href="https://primefirms.co">Claim Your Profile</a>
+                    </td>
+                  </tr>
+                </table>
+
+                <div class="offer-card" style="margin-top: 28px;">
+                  <p style="margin: 0 0 6px; font-weight: 600;">Next Steps</p>
+                  <p style="margin: 0; line-height: 1.6;">
+                    Upon claiming your profile, you'll receive login credentials via email. This
+                    will grant you access to review and complete your profile information, add
+                    portfolio items, and activate your listing.
+                  </p>
+                </div>
+
+                <p class="muted" style="margin: 20px 0 10px;">
+                  If you've already claimed your profile, please disregard this message.
+                </p>
+                <p class="muted" style="margin: 0 0 20px;">
+                  For questions or assistance, please contact us at
+                  <a href="mailto:support@primefirms.co">support@primefirms.co</a>.
+                </p>
+
+                <p style="margin: 0;">
+                  Sincerely,<br />
+                  <strong>The PrimeFirms Team</strong>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td class="footer">
+                <p style="margin: 0 0 10px;">
+                  <a href="https://primefirms.co">primefirms.co</a>
+                </p>
+                <p style="margin: 0 0 10px;">
+                  <a href="https://x.com/PrimeFirms">Twitter</a> |
+                  <a href="https://www.facebook.com/profile.php?id=61578566425616">Facebook</a> |
+                  <a href="https://www.linkedin.com/in/prime-firms-007513386/">LinkedIn</a> |
+                  <a href="https://www.instagram.com/primefirmsinsight/">Instagram</a>
+                </p>
+                <p style="margin: 0;">&copy; {{ current_year }} PrimeFirms. All rights reserved.</p>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+  </body>
+</html>

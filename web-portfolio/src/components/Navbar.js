@@ -31,6 +31,11 @@ export default function Navbar() {
           <li><Link href="#projects" onClick={() => setMobileMenuOpen(false)}>Projects</Link></li>
           <li><Link href="#experience" onClick={() => setMobileMenuOpen(false)}>Experience</Link></li>
           <li><Link href="#contact" onClick={() => setMobileMenuOpen(false)}>Contact</Link></li>
+          <li>
+            <Link href="/submit-lead" className="nav-cta" onClick={() => setMobileMenuOpen(false)}>
+              Post a Project
+            </Link>
+          </li>
         </ul>
 
         <button 
@@ -96,6 +101,25 @@ export default function Navbar() {
         }
         .nav-links a:hover::after {
           width: 100%;
+        }
+        .nav-cta {
+          display: inline-flex;
+          align-items: center;
+          padding: 0.45rem 1.1rem;
+          border-radius: var(--radius-full);
+          background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+          color: #fff !important;
+          font-weight: 600;
+          font-size: 0.875rem;
+          transition: var(--transition);
+          white-space: nowrap;
+        }
+        .nav-cta::after {
+          display: none !important;
+        }
+        .nav-cta:hover {
+          opacity: 0.88;
+          transform: translateY(-1px);
         }
         .mobile-toggle {
           display: none;
